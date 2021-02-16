@@ -1,0 +1,1 @@
+int watchmounts(int mnt_fd);

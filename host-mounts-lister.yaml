@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: host-mounts-lister
+  labels:
+    app: host-mounts-lister
+  annotations:
+    container.apparmor.security.beta.kubernetes.io/host-mounts-lister: unconfined
+spec:
+  hostPID: true
+  containers:
+    - name: host-mounts-lister
+      image: jhwbarlow/host-mounts-lister:0.0.1
+      securityContext:
+        capabilities:
+          add:
+            - SYS_CHROOT
+            - SYS_ADMIN
+            - SYS_PTRACE
